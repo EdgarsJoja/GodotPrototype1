@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/World/Obstacle.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 500, 10 )
+
+[node name="World" type="Node2D"]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2( 504.065, 407.092 )
+
+[node name="GroundCollisionShape" type="CollisionShape2D" parent="Ground"]
+shape = SubResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 16.8006, 377.368 )
+
+[node name="ObstaclesYSort" type="YSort" parent="."]
+
+[node name="Obstacle" parent="ObstaclesYSort" instance=ExtResource( 2 )]
+position = Vector2( 672.025, 377.368 )
+
+[node name="Obstacle2" parent="ObstaclesYSort" instance=ExtResource( 2 )]
+position = Vector2( 404.507, 377.368 )
+
+[node name="Obstacle3" parent="ObstaclesYSort" instance=ExtResource( 2 )]
+position = Vector2( 418.723, 377.368 )
+
+[editable path="ObstaclesYSort/Obstacle"]
