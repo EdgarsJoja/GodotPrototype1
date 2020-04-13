@@ -14,6 +14,9 @@ game_manager_path = NodePath("GameManager")
 
 [node name="World" type="Node2D" parent="."]
 
+[node name="SpawnPosition" type="Position2D" parent="World"]
+position = Vector2( 40.8006, 332.501 )
+
 [node name="Ground" type="StaticBody2D" parent="World" groups=[
 "Ground",
 ]]
@@ -25,6 +28,12 @@ shape = SubResource( 1 )
 [node name="Player" parent="World" instance=ExtResource( 1 )]
 position = Vector2( 16.8006, 377.368 )
 
+[node name="AnimatedSprite" parent="World/Player" index="2"]
+frame = 2
+
+[node name="Spawn" parent="World/Player" index="3"]
+spawn_position_path = NodePath("../../SpawnPosition")
+
 [node name="ObstaclesYSort" type="YSort" parent="World"]
 
 [node name="Obstacle" parent="World/ObstaclesYSort" instance=ExtResource( 2 )]
@@ -34,6 +43,9 @@ position = Vector2( 672.025, 377.368 )
 position = Vector2( 404.507, 377.368 )
 
 [node name="Obstacle3" parent="World/ObstaclesYSort" instance=ExtResource( 2 )]
-position = Vector2( 505.116, 375.469 )
+position = Vector2( 418.723, 377.368 )
 
 [node name="GameManager" parent="." instance=ExtResource( 3 )]
+[connection signal="restart" from="GameManager" to="World/Player" method="_on_GameManager_restart"]
+
+[editable path="World/Player"]
