@@ -53,10 +53,14 @@ shape = SubResource( 2 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 6 )
 animation = "Run"
+speed_scale = 2.0
 playing = true
 script = ExtResource( 3 )
 
 [node name="Spawn" parent="." instance=ExtResource( 4 )]
 spawn_position_path = NodePath(".")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
 [connection signal="body_entered" from="HitboxArea2D" to="AnimatedSprite" method="_on_HitboxArea2D_body_entered"]
 [connection signal="body_exited" from="HitboxArea2D" to="AnimatedSprite" method="_on_HitboxArea2D_body_exited"]
