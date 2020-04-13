@@ -34,6 +34,6 @@ position = Vector2( 672.025, 377.368 )
 position = Vector2( 404.507, 377.368 )
 
 [node name="Obstacle3" parent="World/ObstaclesYSort" instance=ExtResource( 2 )]
-position = Vector2( 418.723, 377.368 )
+position = Vector2( 505.116, 375.469 )
 
 [node name="GameManager" parent="." instance=ExtResource( 3 )]
