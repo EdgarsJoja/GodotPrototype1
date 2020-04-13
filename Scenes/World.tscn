@@ -8,7 +8,9 @@ extents = Vector2( 500, 10 )
 
 [node name="World" type="Node2D"]
 
-[node name="Ground" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="." groups=[
+"Ground",
+]]
 position = Vector2( 504.065, 407.092 )
 
 [node name="GroundCollisionShape" type="CollisionShape2D" parent="Ground"]
