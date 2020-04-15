@@ -2,7 +2,7 @@ extends Node
 
 signal restart
 
-func _process(delta):
+func _process(_delta):
 	get_input()
 
 func _on_obstacle_collision():

@@ -3,6 +3,9 @@ extends KinematicBody2D
 export (NodePath) var spawn_path
 onready var spawn = get_node(spawn_path)
 
+export (NodePath) var animated_sprite_path
+onready var animated_sprite = get_node(animated_sprite_path)
+
 export (int) var jump_speed = -500
 export (int) var run_speed = 300
 export (int) var gravity = 1800
@@ -23,10 +26,16 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	velocity.x = run_speed
 
-	if jumping and is_on_floor():
-		jumping = false
+	if is_on_floor():
+		animated_sprite.play("Run")
+
+		if jumping:
+			jumping = false
+	else:
+		animated_sprite.stop()
 
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 
 func _on_GameManager_restart():
+	velocity = Vector2()
 	spawn.respawn()

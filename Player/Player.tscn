@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Player.png" type="Texture" id=2]
-[ext_resource path="res://Player/AnimatedSprite.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Utilities/Spawn.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -37,6 +36,7 @@ animations = [ {
 collision_layer = 2
 script = ExtResource( 1 )
 spawn_path = NodePath("Spawn")
+animated_sprite_path = NodePath("AnimatedSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -1.85011 )
@@ -53,14 +53,12 @@ shape = SubResource( 2 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 6 )
 animation = "Run"
+frame = 1
 speed_scale = 2.0
 playing = true
-script = ExtResource( 3 )
 
 [node name="Spawn" parent="." instance=ExtResource( 4 )]
 spawn_position_path = NodePath(".")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-[connection signal="body_entered" from="HitboxArea2D" to="AnimatedSprite" method="_on_HitboxArea2D_body_entered"]
-[connection signal="body_exited" from="HitboxArea2D" to="AnimatedSprite" method="_on_HitboxArea2D_body_exited"]
