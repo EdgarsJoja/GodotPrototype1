@@ -5,7 +5,7 @@ signal restart
 func _process(_delta):
 	get_input()
 
-func _on_obstacle_collision():
+func handle_obstacle_collision():
 	print("Obstacle collision")
 	get_tree().paused = true
 

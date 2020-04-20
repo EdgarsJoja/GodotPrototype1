@@ -9,7 +9,6 @@
 
 [node name="Game" type="Node"]
 script = ExtResource( 4 )
-game_manager_path = NodePath("GameManager")
 
 [node name="World" type="Node2D" parent="."]
 
@@ -28,19 +27,15 @@ spawn_position_path = NodePath("../../SpawnPosition")
 [node name="ObstaclesYSort" type="YSort" parent="World"]
 position = Vector2( 0, -399.831 )
 
-[node name="Obstacle" parent="World/ObstaclesYSort" instance=ExtResource( 2 )]
-position = Vector2( 672.025, 377.368 )
-
-[node name="Obstacle2" parent="World/ObstaclesYSort" instance=ExtResource( 2 )]
-position = Vector2( 404.507, 377.368 )
-
-[node name="Obstacle3" parent="World/ObstaclesYSort" instance=ExtResource( 2 )]
-position = Vector2( 418.723, 377.368 )
-
 [node name="Terrain" type="Node" parent="World"]
 script = ExtResource( 6 )
-packed_ground_scene = ExtResource( 5 )
+ground_scene = ExtResource( 5 )
+obstacle_scene = ExtResource( 2 )
+obstacles_container_path = NodePath("../ObstaclesYSort")
 target_path = NodePath("../Player")
+obstacle_collision_handler_path = NodePath("../../GameManager")
+max_block_render_distance = 1000.0
+min_obstacles_distance = 200.0
 
 [node name="GameManager" parent="." instance=ExtResource( 3 )]
 [connection signal="restart" from="GameManager" to="World/Player" method="_on_GameManager_restart"]
